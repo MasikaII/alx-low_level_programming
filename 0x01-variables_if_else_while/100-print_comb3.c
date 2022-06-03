@@ -22,6 +22,7 @@ int main(void)
 				putchar(b);
 				if (b == '9' && a == '9')
 				{
+					putchar('\n');
 				}
 				else
 				{
@@ -29,13 +30,13 @@ int main(void)
 					putchar(' ');
 				}
 			}
-			b++;
+			++b;
 		}
 		if (b >= '9')
 		{
 			b = '0';
 		}
-		a++;
+		++a;
 	}
 	return (0);
 }
