@@ -22,7 +22,6 @@ int main(void)
 				putchar(b);
 				if (b == '9' && a == '9')
 				{
-					putchar('\n');
 				}
 				else
 				{
