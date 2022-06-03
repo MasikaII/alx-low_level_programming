@@ -6,37 +6,29 @@
 */
 int main(void)
 {
-	int a = '0';
-	int b = '0';
+	int a = 48;
+	int b = 48;
 
-	while (a <= '9')
+	while (b < 58)
 	{
-		while (b <= '9')
+		a = 48;
+		while (a < 58)
 		{
-			if (a > b || a == b)
+			if (b != a && b < a)
 			{
-			}
-			else
-			{
-				putchar(a);
 				putchar(b);
-				if (b == '9' && a == '9')
+				putchar(a);
+				if (a == 57 && b == 56)
 				{
-					putchar('\n');
+					break;
 				}
-				else
-				{
-					putchar(',');
-					putchar(' ');
-				}
+				putchar(',');
+				putchar(' ');
 			}
-			++b;
+			a++;
 		}
-		if (b >= '9')
-		{
-			b = '0';
-		}
-		++a;
+		b++;
 	}
+	putchar('\n');
 	return (0);
 }
