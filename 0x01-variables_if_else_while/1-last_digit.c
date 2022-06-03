@@ -3,7 +3,7 @@
 #include <time.h>
 /**
  * main - Entry point to the program
- * Description: Using if statement
+ * Description: Using if...else statement
  * Return: Always 0(Success)
 */
 int main(void)
@@ -21,11 +21,11 @@ int main(void)
 	{
 		printf("%s %d is %d %s\n", a, n, n % 10, b);
 	}
-	if (n % 10 == 0)
+	else if (n % 10 == 0)
 	{
 		printf("%s %d is %d %s\n", a, n, n % 10, c);
 	}
-	if (n % 10 < 6 && n % 10 > 0)
+	else
 	{
 		printf("%s %d is %d %s\n", a, n, n % 10, d);
 	}
