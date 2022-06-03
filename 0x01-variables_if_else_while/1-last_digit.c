@@ -19,15 +19,15 @@ int main(void)
 
 	if (n % 10 > 5)
 	{
-		printf("%s %d is %d %s", a, n, n % 10, b);
+		printf("%s %d is %d %s\n", a, n, n % 10, b);
 	}
 	if (n % 10 == 0)
 	{
-		printf("%s %d is %d %s", a, n, n % 10, c);
+		printf("%s %d is %d %s\n", a, n, n % 10, c);
 	}
 	if (n % 10 < 6 && n % 10 > 0)
 	{
-		printf("%s %d is %d %s", a, n, n % 10, d);
+		printf("%s %d is %d %s\n", a, n, n % 10, d);
 	}
 
 	return (0);
