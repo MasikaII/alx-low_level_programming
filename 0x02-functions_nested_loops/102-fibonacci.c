@@ -10,7 +10,7 @@ int main(void)
 	unsigned long b = 2;
 	unsigned long c = 3;
 
-	print("1, 2, ");
+	printf("1, 2, ");
 	for (i = 0; i < 48; i++)
 	{
 		c = a + b;
