@@ -19,12 +19,12 @@ void times_table(void)
 			if (z <= 9)
 			{
 				_putchar(32);
-				_putchar(c + 48);
+				_putchar(z + 48);
 			}
 			else
 			{
-				_putchar((c / 10) + 48);
-				_putchar((c % 10) + 48);
+				_putchar((z / 10) + 48);
+				_putchar((z % 10) + 48);
 			}
 		}
 		_putchar('\n');
