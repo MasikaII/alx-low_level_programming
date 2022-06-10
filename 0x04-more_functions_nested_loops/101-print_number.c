@@ -1,22 +1,33 @@
 #include "main.h"
-#define DIV (' / ')
-#define MOD (' % ')
 /**
- * print_number - outputs an integer
- * @n: integer value
+ * print_number - outputs an integer value
+ * @n: input value
  * Return: void
  */
 void print_number(int n)
 {
-	unsigned int x;
+	int copy, nth, size = 1, ones = n % 10;
 
-	x = n;
-	if (n < 0)
+	n /= 10;
+	copy = n;
+	if (ones < 0)
 	{
-		_putchar(45);
-		x = -x;
+		ones *= -1, copy *= -1, n *= -1;
+		_putchar('-');
 	}
-	if ((x DIV 10) > 0)
-		print_number(x DIV 10);
-	_putchar((x MOD 10) + '0');
+	if (copy > 0)
+	{
+		while (copy / 10 != 0)
+		{
+			copy /= 10, size *= 10;
+		}
+		while (size > 0)
+		{
+			nth = n / size;
+			_putchar('0' + nth);
+			n -= nth * size;
+			size /= 10;
+		}
+	}
+	_putchar('0' + ones);
 }
