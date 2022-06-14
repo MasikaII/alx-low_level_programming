@@ -16,7 +16,7 @@ void rev_string(char *s)
 	}
 	b = d;
 	begin_c = s;
-	conc_c = s;
+	conc_c = s + b;
 
 	for (a = 0; a < b - 1; a++)
 	{
