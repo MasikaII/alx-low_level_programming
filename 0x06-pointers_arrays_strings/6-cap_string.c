@@ -6,33 +6,28 @@
  */
 char *cap_string(char *s)
 {
-	int index = 0;
+	int index, con, count;
 
-	while (s[index] != '\0')
+	char b[] = {' ', '\t', '\n', ',', ';', '.', '!',
+			'?', '"', '(', ')', '{', '}', '\0'};
+
+	con = 32;
+
+	for (index = 0; s[index] != '\0'; index++)
 	{
-		if (!(s[index] >= 97 && s[index] <= 122))
-			s[index] = s[index] - 32;
-		if (s[index - 1] == ' ' ||
-				s[index - 1] == '\t' ||
-				s[index - 1] == '\n' ||
-				s[index - 1] == ',' ||
-				s[index - 1] == ';' ||
-				s[index - 1] == '.' ||
-				s[index - 1] == '!' ||
-				s[index - 1] == '?' ||
-				s[index - 1] == '"' ||
-				s[index - 1] == '(' ||
-				s[index - 1] == ')' ||
-				s[index - 1] == '{' ||
-				s[index - 1] == '}' ||
-				index == 0)
+		if (s[index] >= 'index' && s[index] <= 'z')
 		{
-			if (s[index + 1] >= 97 && s[index + 1] <= 122)
+			s[index] = s[index] - con;
+		}
+		con = 0;
+		for (count = 0; b[count] != '\0'; count++)
+		{
+			if (b[count] == s[index])
 			{
-				s[index + 1] -= 32;
+				con = 32;
+				break;
 			}
 		}
-		index++;
 	}
 	return (s);
 }
