@@ -8,35 +8,36 @@
  */
 void print_buffer(char *b, int size)
 {
-	int a, count;
+	int x, y, z;
 
-	for (a = 0; a < size; a += 10)
-	{
-		printf("%08x: ", a);
-
-		for (count = 0; count < 10; count++)
-		{
-			if ((count + a) >= size)
-				printf(" ");
-			else
-				printf("%02x", *(b + count + a));
-			if ((count % 2) != 0 && count != 0)
-				printf(" ");
-		}
-		for (count = 0; count < 10; count++)
-		{
-			if ((count + a) >= size)
-				break;
-			else if (*(b + count + a) >= 31 &&
-					*(b + count + a) <= 126)
-				printf("%c", *(b + count + a));
-			else
-				printf(".");
-		}
-		if (a >= size)
-			continue;
-		printf("\n");
-	}
 	if (size <= 0)
 		printf("\n");
+	else
+	{
+		for (x = 0; x < size;  x += 10)
+		{
+			printf("%.8x", x);
+			for (y = x; y < x + 10; y++)
+			{
+				if (y % 2 == 0)
+					printf(" ");
+				if (y < size)
+					printf("%.2x", *(b + y));
+				else
+					printf("  ");
+			}
+			printf(" ");
+			for (z = x; z < x + 10; z++)
+			{
+				if (z >= size)
+					break;
+				if (*(b + z) < 32 || *(b + z) > 126)
+					printf("%c", '.');
+				else
+					printf("%c", *(b + z));
+			}
+			printf("\n");
+		}
+	}
 }
+
