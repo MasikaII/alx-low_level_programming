@@ -8,10 +8,10 @@ char *cap_string(char *s)
 {
 	int index = 0;
 
-	while (s[index])
+	while (s[index] != '\0')
 	{
-		while (!(s[index] >= 'a' && s[index] <= 'z'))
-			index++;
+		if (!(s[index] >= 97 && s[index] <= 122))
+			s[index] = s[index] - 32;
 		if (s[index - 1] == ' ' ||
 				s[index - 1] == '\t' ||
 				s[index - 1] == '\n' ||
@@ -26,7 +26,12 @@ char *cap_string(char *s)
 				s[index - 1] == '{' ||
 				s[index - 1] == '}' ||
 				index == 0)
-			s[index] -= 32;
+		{
+			if (s[index + 1] >= 97 && s[index + 1] <= 122)
+			{
+				s[index + 1] -= 32;
+			}
+		}
 		index++;
 	}
 	return (s);
