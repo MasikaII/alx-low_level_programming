@@ -18,6 +18,18 @@ char *cap_string(char *s)
 		switch (s[i])
 		{
 			case '\t':
+			case ',':
+                        case ';':
+                        case '.':
+                        case '!':
+                        case '?':
+                        case '"':
+                        case '(':
+                        case ')':
+                        case '{':
+                        case '}':
+                        case ' ':
+                        case '\n':
 				if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
 				{
 					s[i + 1] += ('A' - 'a');
