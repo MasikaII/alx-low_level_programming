@@ -1,78 +1,56 @@
-#include <stdio.h>
 #include "main.h"
+#include <stdio.h>
 /**
- * ascii - determines if n is an ASCII character
- * @n: input
- * Return: 1 if ASCII 0 otherwise
- */
-int ascii(int n)
-{
-	return (n >= 32 && n <= 126);
-}
-/**
- * hexadecimal - prints hexadecimal value of a string
- * @string: string to be printed
- * @a: start position
- * @z: end position
+ * print_line - prints s bytes of a buffer
+ * @c: buffer being printed
+ * @s: bytes of buffer being printed
+ * @l: line of buffer being printed
  * Return: void
  */
-void hexadecimal(char *string, int a, int z)
+void print_line(char *c, int s, int l)
 {
-	int x = 0;
+	int j, k;
 
-	while (x < 10)
+	for (j = 0; j <= 9; j++)
 	{
-		if (x < z)
-			printf("%02x", *(string + a + x));
+		if (j <= s)
+			printf("%02x", c[l * 10 + j]);
 		else
 			printf("  ");
-		if (x % 2)
-			printf(" ");
-		x++;
+		if (j % 2)
+			putchar(' ');
 	}
-}
-/**
- * ascii_print - prints ascii values for string string
- * @string: input string
- * @a: start position
- * @z: end position
- * Return: void
- */
-void ascii_print(char *string, int a, int z)
-{
-	int x, y;
-
-	y = 0;
-	while (y < z)
+	for (k = 0; k <= s; k++)
 	{
-		x = *(string + y + a);
-		if (!ascii(x))
-			x = 46;
-		printf("%c", x);
-		y++;
+		if (c[l * 10 + k] > 31 && c[l * 10 + k] < 127)
+			putchar(c[l * 10 + k]);
+		else
+			putchar('.');
 	}
 }
 /**
  * print_buffer - prints a buffer
- * @b: input string
+ * @b: buffer to print
  * @size: size of buffer
  * Return: void
  */
 void print_buffer(char *b, int size)
 {
-	int a, z;
+	int i;
 
-	if (size > 0)
+	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
-		for (a = 0; a < size; a += 10)
+		printf("%08x: ", i * 10);
+		if (i < size / 10)
 		{
-			z = (size - a < 10) ? size - a : 10;
-			printf("%08x: ", a);
-			hexadecimal(b, a, z);
-			ascii_print(b, a, z);
-			printf("\n");
+			print_line(b, 9, i);
 		}
+		else
+		{
+			print_line(b, size % 10 - 1, i);
+		}
+		putchar('\n');
 	}
-	else
-		printf("\n");
+	if (size == 0)
+		putchar('\n');
 }
