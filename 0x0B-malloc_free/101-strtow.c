@@ -1,4 +1,5 @@
-##include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 /**
  * strncat_mod - concatenates string with n bytes from another string
@@ -94,4 +95,4 @@ i++;
 }
 newstr[words + 1] = NULL;
 return (newstr);
-}include <stdio.h>
+}
